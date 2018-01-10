@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "auth-boilerplate",
+    "username": "nick",
+    "password": "thisisatestpassword",
+    "database": "job-search-organizer",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": "false"

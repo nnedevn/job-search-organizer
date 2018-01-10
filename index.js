@@ -38,7 +38,7 @@ app.get('/', function(req, res) {
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile.ejs')
 });
-
+app.use('/profile', require('./controllers/profile.js'));
 app.use('/auth', require('./controllers/auth.js'));
 
 app.listen(process.env.PORT || 3000);
