@@ -3,11 +3,11 @@ var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn.js');
 
 router.get('/', isLoggedIn, function(req, res) {
-  res.render('profile.ejs')
+  res.render('profile/profile.ejs')
 });
 
 router.get('/jobs', function(req, res){
-    res.send('lists jobs')
+    res.render('profile/jobs/listNew.ejs');
 })
 
 router.get('/jobs/:id', function(req,res){
