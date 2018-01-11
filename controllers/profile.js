@@ -1,12 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn.js');
+var getUrlRawHTML = require('../scraperfx/getUrlRawHTML.js');
+
+
+
+
+
+
+
+
+
+
 
 router.get('/', isLoggedIn, function(req, res) {
   res.render('profile/profile.ejs')
 });
 
 router.get('/jobs', function(req, res){
+    getUrlRawHTML();
     res.render('profile/jobs/listNew.ejs');
 })
 
