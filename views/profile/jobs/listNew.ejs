@@ -3,17 +3,19 @@
  
 <% include ../../partials/sidebar%>
 
+
 <div id="content">
     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
     </button> 
     <div>
-        <ul>
-            <li><a href="">something</a></li>
-            <li><a href="">something</a></li>
-            <li><a href="">something</a></li>
-            <li><a href="">something</a></li>
+      <ul>
+        <% jobs.forEach(function(job){ %>
+          <li><a href=""><%= job.jobTitle %></a></li>
+
+        <% }); %>
+        
         </ul>
     </div>
 </div>
