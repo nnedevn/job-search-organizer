@@ -6,5 +6,30 @@ router.get('/', isLoggedIn, function(req, res) {
   res.render('profile.ejs')
 });
 
+router.get('/jobs', function(req, res){
+    res.send('lists jobs')
+})
+
+router.get('/jobs/:id', function(req,res){
+    res.send('single job details');
+})
+
+router.get('/applied', function(req,res){
+    res.send('List jobs applied for');
+});
+
+router.post('/applied', function(req,res){
+    console.log('/applied route reached',req.body);
+    res.send('Adds a job to the applied for category');
+})
+
+router.get('/fav', function(req,res){
+    res.send('Lists saved for later jobs');
+});
+
+router.post('/fav', function(req, res){
+    console.log('/fav route reached', req.body);
+    res.send('Adds a jobs to saved for later');
+})
 
 module.exports = router;
