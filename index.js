@@ -7,11 +7,12 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var app = express();
 
+
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 //declare session before passport and flash
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
