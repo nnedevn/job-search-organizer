@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <!-- Include the sidebar partial -->
+  <% include ../../partials/sidebar%>
+    <div id="content">
+      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+        <i class="glyphicon glyphicon-align-left"></i>
+        <span>Toggle Sidebar</span>
+      </button>
+      <h2>Wait</h2>
+      <!-- loading image -->
+      <div>
+        <ul>
+         
+            <% jobs.forEach(function(job){ %>
+              <li>
+                <a href="<%=job.title%>">
+                  <%= job.title %>
+                </a>
+              </li>
+              <% }); %>
+        </ul>
+      </div>
+    </div>

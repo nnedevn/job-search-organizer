@@ -1,44 +1,44 @@
  var cheerio = require('cheerio');
- 
-function parseIndeedData(data) {
- 
-  var usefullData = [];
 
-  $ = cheerio.load(data);
+ function parseIndeedData(data) {
 
-  $('#resultsCol .row').each(function(index, element) {
-    console.log('ELEMENT', $(element).html());
-    usefullData[index] = {};
+   var usefullData = [];
 
-    usefullData[index]['jobTitle'] = $(element).find('.jobtitle').text();
-    usefullData[index]['companyName'] = $(element).find('.company').text();
+   $ = cheerio.load(data);
 
-    usefullData[index]['jobSummary'] = $(element).find('.summary').text();
+   $('#resultsCol .row').each(function(index, element) {
+     console.log('ELEMENT', $(element).html());
+     usefullData[index] = {};
 
-    usefullData[index]['companyLocation'] = $(element).find('.location').text();
+     usefullData[index]['jobTitle'] = $(element).find('.jobtitle').text();
+     usefullData[index]['companyName'] = $(element).find('.company').text();
 
-    usefullData[index]['jobUrl'] = 'https://www.indeed.com' + $(element).find('.turnstileLink').attr('href');
+     usefullData[index]['jobSummary'] = $(element).find('.summary').text();
 
-//If the post is sponsored, mark it as such, else get when it was posted.
-  if ($(element).find('.result-link-bar-container>.result-link-bar>.sponsoredGray').text()) {
-    usefullData[index]['jobSponsored'] = $(element).find('.result-link-bar-container>.result-link-bar>.sponsoredGray').text();
-  } else {
-    usefullData[index]['jobPostedDate'] = $(element).find('.result-link-bar-container>.result-link-bar>.date').text();
-  }
-    //sockets?
-    // /jobs
-    //do work .then() ----
-    //render page with no data
-    //in.socket.emmit(dataLoaded)
-    //-----pass the data
+     usefullData[index]['companyLocation'] = $(element).find('.location').text();
 
-    //io.socket.on('dataloaded', function(data){
-    //empty spinner
-    //add jobs parse jobs
+     usefullData[index]['jobUrl'] = 'https://www.indeed.com' + $(element).find('.turnstileLink').attr('href');
 
-  });
- 
-  return usefullData;
-}
+     //If the post is sponsored, mark it as such, else get when it was posted.
+     if ($(element).find('.result-link-bar-container>.result-link-bar>.sponsoredGray').text()) {
+       usefullData[index]['jobSponsored'] = $(element).find('.result-link-bar-container>.result-link-bar>.sponsoredGray').text();
+     } else {
+       usefullData[index]['jobPostedDate'] = $(element).find('.result-link-bar-container>.result-link-bar>.date').text();
+     }
+     //sockets?
+     // /jobs
+     //do work .then() ----
+     //render page with no data
+     //in.socket.emmit(dataLoaded)
+     //-----pass the data
 
-module.exports = parseIndeedData;
+     //io.socket.on('dataloaded', function(data){
+     //empty spinner
+     //add jobs parse jobs
+
+   });
+
+   return usefullData;
+ }
+
+ module.exports = parseIndeedData;
