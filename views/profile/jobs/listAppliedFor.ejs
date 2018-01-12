@@ -6,18 +6,25 @@
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
       </button>
-      <h2>Wait</h2>
+
       <!-- loading image -->
       <div>
-        <ul>
+        <div>
          
             <% jobs.forEach(function(job){ %>
-              <li>
+              <div data-jobId="<%=job.id%>">
                 <a href="<%=job.title%>">
                   <%= job.title %>
                 </a>
-              </li>
+              </div>
+
+            <button data-jobId="<%= job.id %>" id="" class="btn, btn-warning removeFromAppliedJob">Remove from Applied</button>
+          <!--   <button data-jobId="<%= job.id %>" id="" class="btn, btn-danger deleteJob">Delete from Saved</button> -->
+
+
+
+
               <% }); %>
-        </ul>
+        </div>
       </div>
     </div>

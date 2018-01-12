@@ -1,41 +1,33 @@
 <div class="wrapper">
-<!-- Include the sidebar partial -->
- 
-<% include ../../partials/sidebar%>
-
-
-<div id="content">
-    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+  <!-- Include the sidebar partial -->
+  <% include ../../partials/sidebar%>
+    <div id="content">
+      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
-    </button> 
-      <h2>Wait</h2>
+      </button>
+   
       <!-- loading image -->
-
-    <div>
-      <ul>
-        <% jobs.forEach(function(job){ %>
-          <li><a href="<%=job.jobUrl%>"><%= job.jobTitle %></a></li>
-
-          <form action="/profile/applied" method="POST">
-
-            <input type="hidden" name="title" value="<%= job.jobTitle %>">
-            <input type="hidden" name="summary" value="<%= job.jobSummary %>">
-            <input type="hidden" name="url" value="<%= job.jobUrl %>">
-            <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
-            <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
-            <input type="hidden" name="originSite" value="Indeed">
-            <input type="hidden" name="companyName" value="<%= job.companyName %>">
-            <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
-
-            <button type="submit" class="btn btn-small">Add to DB</button>
-  
-  
-          </form>
-
-  
-        <% }); %>
-        
-        </ul>
+      <div>
+        <div>
+          <% jobs.forEach(function(job){ %>
+            <div>
+              <a href="<%=job.jobUrl%>">
+                <%= job.jobTitle %>
+              </a>
+              <form action="/profile/fav" method="POST">
+                <input type="hidden" name="title" value="<%= job.jobTitle %>">
+                <input type="hidden" name="summary" value="<%= job.jobSummary %>">
+                <input type="hidden" name="url" value="<%= job.jobUrl %>">
+                <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
+                <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
+                <input type="hidden" name="originSite" value="Indeed">
+                <input type="hidden" name="companyName" value="<%= job.companyName %>">
+                <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
+                <button type="submit" class="btn btn-small">Add to DB</button>
+              </form>
+            </div>
+            <% }); %>
+        </div>
+      </div>
     </div>
-</div>

@@ -7,7 +7,7 @@
    $ = cheerio.load(data);
 
    $('#resultsCol .row').each(function(index, element) {
-     console.log('ELEMENT', $(element).html());
+     // console.log('ELEMENT', $(element).html());
      usefullData[index] = {};
 
      usefullData[index]['jobTitle'] = $(element).find('.jobtitle').text();

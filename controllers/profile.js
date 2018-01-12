@@ -14,8 +14,9 @@ router.get('/', isLoggedIn, function(req, res) {
   res.render('profile/profile.ejs')
 });
 
-router.get('/jobs', isLoggedIn, function(req, res) {
-  getUrlRawHTML().then(function(rawHTML) {
+router.get('/jobs/:searchTerm/:location', isLoggedIn, function(req, res) {
+  console.log('GET ', req.params.location);
+  getUrlRawHTML(req.params.searchTerm, req.params.location).then(function(rawHTML) {
       return Promise.all([rawHTML, parseIndeedData(rawHTML)]);
     })
     .then(function(result) {
@@ -24,23 +25,29 @@ router.get('/jobs', isLoggedIn, function(req, res) {
     .catch(function(err) { console.log(err); })
 });
 
-router.get('/applied/:id', isLoggedIn, function(req, res) {
-  
+router.post('/jobs', isLoggedIn, function(req, res) {
+  console.log('POST ', req.body.location);
+  res.redirect('/profile/jobs/' + req.body.searchTerm + '/' + req.body.location);
+})
+
+
+router.get('/fav', isLoggedIn, function(req, res) {
+
   //Send all the jobs with the current user's id.
   db.job.findAll({
-        where: {userId : req.params.id},
-       
-    }).then(function(jobs){
-         // res.send(jobs);
-        res.render('profile/jobs/listApplied.ejs', {jobs:jobs});
-    });
+    where: { userId: req.user.id },
+
+  }).then(function(jobs) {
+    // res.send(jobs);
+    res.render('profile/jobs/listSaved.ejs', { jobs: jobs });
+  });
 });
 
 router.get('/jobs/:id', function(req, res) {
-
+  res.send("id route reached");
 });
 
-router.post('/applied', isLoggedIn, function(req, res) {
+router.post('/fav', isLoggedIn, function(req, res) {
 
   db.job.create({
     title: req.body.title,
@@ -61,8 +68,51 @@ router.post('/applied', isLoggedIn, function(req, res) {
 
 });
 
-router.get('/fav', function(req, res) {
-  res.send('Lists saved for later jobs');
+router.put('/fav/:id', isLoggedIn, function(req, res){
+
+  console.log(req.body);
+
+  db.job.findById(req.params.id).then(function(job){
+    if (job) {
+      job.updateAttributes(req.body).then(function() {
+        res.status(200).send({msg: 'success'});
+      });
+    } else {
+      res.status(404).send({msg: 'error'});
+    }
+  }).catch(function(err) {
+    res.status(500).send({msg: 'error'});
+  });
+
+  console.log('put reached');
+  res.send('fav route reached');
+
+});
+
+router.delete('/fav/:id', isLoggedIn, function(req, res) {
+  db.job.findById(req.params.id).then(function(job) {
+    if (job) {
+      job.destroy().then(function() {
+        res.send({msg: 'success'});
+      });
+    } else {
+      res.status(404).send({msg: 'error'});
+    }
+  }).catch(function(err) {
+    res.status(500).send({msg: 'error'});
+  });
+});
+
+router.get('/applied', function(req, res) {
+
+  db.job.findAll({
+    where: { appliedFor: "true"  },
+
+  }).then(function(jobs) {
+    // res.send(jobs);
+    res.render('profile/jobs/listAppliedFor.ejs', { jobs: jobs });
+  });
+
 });
 
 // router.post('/fav', function(req, res) {

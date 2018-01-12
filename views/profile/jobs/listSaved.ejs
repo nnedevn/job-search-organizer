@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <!-- Include the sidebar partial -->
+  <% include ../../partials/sidebar%>
+    <div id="content">
+      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+        <i class="glyphicon glyphicon-align-left"></i>
+        <span>Toggle Sidebar</span>
+      </button>
+
+      <!-- loading image -->
+      <div>
+        <div>
+         
+            <% jobs.forEach(function(job){ %>
+              <div ">
+                <a href="<%=job.title%>">
+                  <%= job.title %>
+                </a>
+              </div>
+
+            <button type="submit" data-jobId="<%= job.id %>" id="" class="btn, btn-success addToAppliedJob">Add to Applied</button>
+            <button data-jobId="<%= job.id %>" id="" class="btn, btn-danger deleteJob">Delete from Saved</button>
+
+
+
+
+              <% }); %>
+        </div>
+      </div>
+    </div>
