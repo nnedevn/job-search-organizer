@@ -15,8 +15,18 @@
     <div>
       <ul>
         <% jobs.forEach(function(job){ %>
-          <li><a href="<%=job.jobPostUrlCompany%>"><%= job.jobTitle %></a></li>
+          <li><a href="<%=job.jobUrl%>"><%= job.jobTitle %></a></li>
 
+
+          <form action="/profile/applied" method="POST">
+            <input type="hidden" name=>
+
+            <button type="submit" class="btn btn-small">Applied</button>
+  
+  
+          </form>
+
+  
         <% }); %>
         
         </ul>

@@ -4,21 +4,11 @@ var isLoggedIn = require('../middleware/isLoggedIn.js');
 var getUrlRawHTML = require('../scraperfx/getUrlRawHTML.js');
 var cheerio = require('cheerio');
 var $;
-var parseIndeedData = require('../scraperfx/parseIndeedDta.js');
-
-
-
-
-
-
-
-
+var parseIndeedData = require('../scraperfx/parseIndeedData.js');
 
 router.get('/', isLoggedIn, function(req, res) {
   res.render('profile/profile.ejs')
 });
-
-
 
 router.get('/jobs', function(req, res) {
   getUrlRawHTML().then(function(rawHTML){
@@ -29,11 +19,11 @@ router.get('/jobs', function(req, res) {
   })
   .catch(function(err){console.log(err);})
 
-})
+});
 
 router.get('/jobs/:id', function(req, res) {
   res.send('single job details');
-})
+});
 
 router.get('/applied', function(req, res) {
   res.send('List jobs applied for');
@@ -42,7 +32,7 @@ router.get('/applied', function(req, res) {
 router.post('/applied', function(req, res) {
   console.log('/applied route reached', req.body);
   res.send('Adds a job to the applied for category');
-})
+});
 
 router.get('/fav', function(req, res) {
   res.send('Lists saved for later jobs');
@@ -51,6 +41,6 @@ router.get('/fav', function(req, res) {
 router.post('/fav', function(req, res) {
   console.log('/fav route reached', req.body);
   res.send('Adds a jobs to saved for later');
-})
+});
 
 module.exports = router;

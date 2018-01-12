@@ -17,7 +17,7 @@ function parseIndeedData(data) {
 
     usefullData[index]['companyLocation'] = $(element).find('.location').text();
 
-    usefullData[index]['jobPostUrlCompany'] = 'https://www.indeed.com' + $(element).find('.turnstileLink').attr('href');
+    usefullData[index]['jobUrl'] = 'https://www.indeed.com' + $(element).find('.turnstileLink').attr('href');
 
 //If the post is sponsored, mark it as such, else get when it was posted.
   if ($(element).find('.result-link-bar-container>.result-link-bar>.sponsoredGray').text()) {
