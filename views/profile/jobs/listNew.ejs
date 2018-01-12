@@ -9,10 +9,13 @@
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
     </button> 
+      <h2>Wait</h2>
+      <!-- loading image -->
+
     <div>
       <ul>
         <% jobs.forEach(function(job){ %>
-          <li><a href=""><%= job.jobTitle %></a></li>
+          <li><a href="<%=job.jobPostUrlCompany%>"><%= job.jobTitle %></a></li>
 
         <% }); %>
         
