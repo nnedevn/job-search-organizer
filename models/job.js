@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   var job = sequelize.define('job', {
     title: DataTypes.STRING,
-    summary: DataTypes.STRING,
-    url: DataTypes.STRING,
+    summary: DataTypes.TEXT,
+    url: DataTypes.TEXT,
     sponsored: DataTypes.STRING,
     postedDate: DataTypes.STRING,
     originSite: DataTypes.STRING,

@@ -12,10 +12,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       summary: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       url: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       sponsored: {
         type: Sequelize.STRING

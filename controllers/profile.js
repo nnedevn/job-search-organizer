@@ -35,11 +35,23 @@ router.get('/jobs/:id', function(req, res) {
 
 router.post('/applied', isLoggedIn, function(req, res) {
   console.log('/applied route reached', req.body);
-  
-
-  res.send(req.body);
-
-
+    
+    db.job.create({
+      title: req.body.title,
+      summary: req.body.summary,
+      url: req.body.url,
+      sponsored: req.body.sponsored,
+      postedDate: req.body.postedDate,
+      originSite: req.body.originSite,
+      userId: req.user.id,
+      saved:'',
+      appliedFor:'',
+      screenshotLink:'',
+      companyName: req.body.companyName,
+      companyLocation: req.body.companyLocation
+    }).then(function(job){
+      res.send(job);
+    })
 
 });
 
