@@ -17,11 +17,18 @@
         <% jobs.forEach(function(job){ %>
           <li><a href="<%=job.jobUrl%>"><%= job.jobTitle %></a></li>
 
-
           <form action="/profile/applied" method="POST">
-            <input type="hidden" name=>
 
-            <button type="submit" class="btn btn-small">Applied</button>
+            <input type="hidden" name="title" value="<%= job.jobTitle %>">
+            <input type="hidden" name="summary" value="<%= job.jobSummary %>">
+            <input type="hidden" name="url" value="<%= job.jobUrl %>">
+            <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
+            <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
+            <input type="hidden" name="originSite" value="Indeed">
+            <input type="hidden" name="companyName" value="<%= job.companyName %>">
+            <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
+
+            <button type="submit" class="btn btn-small">Add to DB</button>
   
   
           </form>

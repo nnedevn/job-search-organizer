@@ -27,7 +27,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     facebookId: DataTypes.STRING,
     facebookToken: DataTypes.STRING
-  }, {
+  },{
+    classMethods: {
+      associate: function(models){
+        models.user.hasMany(models.jobs)
+      }
+    }
+  }, 
+
+  {
     hooks: {
       beforeCreate: function(pendingUser, options) {
         if (pendingUser && pendingUser.password) {

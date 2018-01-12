@@ -5,7 +5,7 @@ var db = require('../models/');
 
 router.get('/login', function(req,res){
   res.render('auth/login.ejs');
-})
+});
 
 router.post('/login', passport.authenticate('local', {
             successRedirect: '/profile',
@@ -66,6 +66,6 @@ router.get('/callback/facebook', passport.authenticate('facebook', {
   successFlash: 'You successfully logged in via Facebook',
   failureRedirect: '/auth/login',
   failureFlash: 'You tried to log in with FB, but FB does not like your credentials'
-}))
+}));
 
 module.exports = router;
