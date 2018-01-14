@@ -27,12 +27,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     facebookId: DataTypes.STRING,
     facebookToken: DataTypes.STRING
-  },{
-    classMethods: {
-      associate: function(models){
-        models.user.hasMany(models.jobs)
-      }
-    }
+  // },{
+  //   classMethods: {
+  //     associate: function(models){
+  //       models.user.hasMany(models.jobs)
+  //     }
+  //   }
   }, 
 
   {
@@ -46,6 +46,10 @@ module.exports = (sequelize, DataTypes) => {
     },
 
   });
+
+  user.associate = function(models){
+    models.user.hasMany(models.job);
+  }
 
   user.prototype.isValidPassword = function(passwordTyped) {
     return bcrypt.compareSync(passwordTyped, this.password);
