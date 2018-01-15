@@ -8,7 +8,7 @@ var db = require('../models/');
 var getUrlRawHTML = require('../scraperfx/getUrlRawHTML.js');
 var parseIndeedData = require('../scraperfx/parseIndeedData.js');
 
-
+var jobsUrl = '';
 
 router.get('/', isLoggedIn, function(req, res) {
   res.render('profile/profile.ejs')
@@ -26,8 +26,8 @@ router.get('/jobs/:searchTerm/:location', isLoggedIn, function(req, res) {
 });
 
 router.post('/jobs', isLoggedIn, function(req, res) {
-  console.log('POST ', req.body.location);
-  res.redirect('/profile/jobs/' + req.body.searchTerm + '/' + req.body.location);
+  jobsUrl = '/profile/jobs/' + req.body.searchTerm + '/' + req.body.location;
+  res.redirect(jobsUrl);
 })
 
 
@@ -63,7 +63,7 @@ router.post('/fav', isLoggedIn, function(req, res) {
     companyName: req.body.companyName,
     companyLocation: req.body.companyLocation
   }).then(function(job) {
-    res.send(job);
+    res.redirect(jobsUrl);
   })
 
 });
@@ -114,10 +114,5 @@ router.get('/applied', function(req, res) {
   });
 
 });
-
-// router.post('/fav', function(req, res) {
-//   console.log('/fav route reached', req.body);
-//   res.send('Adds a jobs to saved for later');
-// });
 
 module.exports = router;
