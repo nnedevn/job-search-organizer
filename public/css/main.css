@@ -4,6 +4,8 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
+
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
@@ -56,8 +58,8 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
-    color: #fff;
+    background: rgb(237, 238, 241);
+    color: rgb(0, 0, 0);
     transition: all 0.3s;
 }
 
@@ -148,7 +150,7 @@ a.article, a.article:hover {
 ----------------------------------------------------- */
 #content {
     padding: 20px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     transition: all 0.3s;
 }
 

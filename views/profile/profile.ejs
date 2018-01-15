@@ -1,31 +1,20 @@
-<h3> Welcome back, <%=currentUser.firstname %>. </h3>
-<div class="wrapper">
-<!-- Include the sidebar partial -->
- 
-<% include ../partials/sidebar%>
+<!-- <h3> Welcome back,
+  <%=currentUser.firstname %>. </h3> -->
 
-<div id="content">
-    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+
+
+  <div class="wrapper">
+  <!-- Include the sidebar partial -->
+
+
+  <% include ../partials/sidebar%>
+
+    <div id="content">
+      <!-- <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
-    </button>
-    <h4>There are no current alerts.</h2>
-</div>        
-<div>
-  <form action="/profile/jobs" method="POST">
-    <div class="form-group">
-      
-      <label for="searchTerm">Searching for: </label>
-  <input type="text" name="searchTerm" class="form-control">
+    </button> -->
 
     </div>
-  <div class="form-group">
-    <label for="location">Location: </label>
-  <input type="text" name="location" class="form-control">  
-  </div>
-
-  <input type="submit" value="Search">
-
-
-  </form>
-</div>
+    
+<div>
