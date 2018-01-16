@@ -21,8 +21,12 @@
             <p>Found on:
               <span class="origin-site">Indeed.com</span>
             </p>
-
-            <button type="submit" data-jobId="<%= job.id %>" id="" class="btn btn-success addToAppliedJob">Add to Applied</button>
+            <% if(job.appliedFor) {%>
+              <button type="submit" data-jobId="<%= job.id %>" id="" class="btn btn-warning addToAppliedJob" disabled>Applied</button>
+              <%} else {%>
+                <button type="submit" data-jobId="<%= job.id %>" id="" class="btn btn-success addToAppliedJob">Add to Applied</button>
+                <%}%>
+            
             <button data-jobId="<%= job.id %>" id="" class="btn btn-danger deleteJob">Delete from Saved</button>
           </div>
           <% }); %>

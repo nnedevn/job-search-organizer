@@ -40,7 +40,7 @@
                 <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
 
                 <%  jobsInDb.forEach(function(jobInDb){
-                if(jobInDb.title === job.jobTitle && jobInDb.companyName.trim() === job.companyName.trim()){
+                if(jobInDb.title === job.jobTitle && jobInDb.summary.trim() === job.jobSummary.trim()){
                   inDatabase = true;
                 }
               });
