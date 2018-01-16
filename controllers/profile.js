@@ -103,7 +103,7 @@ router.delete('/fav/:id', isLoggedIn, function (req, res) {
   });
 });
 
-router.get('/applied', function (req, res) {
+router.get('/applied', isLoggedIn, function (req, res) {
 
   db.job.findAll({
     where: { appliedFor: "true" },
