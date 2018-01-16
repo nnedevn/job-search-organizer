@@ -10,10 +10,11 @@ var parseIndeedData = require('../scraperfx/parseIndeedData.js');
 
 var jobsUrl = '';
 
+//----Get all the save entries for the current user
 function getDbData(userId){
   return db.job.findAll({
     where: {userId: userId}
-  })
+  });
 }
 
 router.get('/', isLoggedIn, function (req, res) {
@@ -26,7 +27,7 @@ router.get('/jobs/:searchTerm/:location', isLoggedIn, function (req, res) {
     return Promise.all([rawHTML, parseIndeedData(rawHTML), getDbData(req.user.id)]);
   })
     .then(function (result) {
-      res.render('profile/jobs/listNew.ejs', { jobs: result[1], jobsInDb: result[2] });
+      res.render('profile/jobs/listNew.ejs', { jobs: result[1], jobsInDb: result[2], jobTitle: req.params.searchTerm, jobLocation: req.params.location });
     })
     .catch(function (err) { console.log(err); })
 });

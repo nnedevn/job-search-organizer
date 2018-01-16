@@ -9,6 +9,7 @@
 
     <!-- loading image -->
     <div>
+      <h5>Showing results for <span class="text-capitalize lead"><%=jobTitle;%></span>  in <span class="text-capitalize lead"><%=jobLocation;%></span>.</h5>
       <div>
         <% jobs.forEach(function(job){ %>
           <% var inDatabase = false; %>
@@ -46,9 +47,9 @@
               });
                %>
                 <% if (inDatabase) {%>
-                  <button type="submit" class="btn btn-small" disabled>Saved</button>
+                  <button type="submit" class="btn btn-small btn-primary" disabled>Saved</button>
                 <%}else{%>
-                  <button type="submit" class="btn btn-small">Save</button>
+                  <button type="submit" class="btn btn-small btn-primary">Save</button>
                 <%}%>
               </form>
             </div>

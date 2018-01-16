@@ -1,13 +1,17 @@
-/*
-    DEMO STYLE
-*/
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700');
-
 
 body {
     font-family: 'Open Sans', sans-serif;
     background: #fafafa;
+}
+
+h4 {
+    font-size: 1.6em;
+}
+
+h5 {
+    padding-bottom: 30px;
+    font-weight: 600;
 }
 
 p {
@@ -15,7 +19,7 @@ p {
     font-size: 1em;
     font-weight: 400;
     line-height: 1.5em;
-    color: rgb(68, 68, 68);
+    color: #333333;
 }
 
 .single-post{
@@ -25,7 +29,6 @@ p {
 
 a, a:hover, a:focus {
     color: inherit;
-    /* text-decoration: none; */
     transition: all 0.3s;
 }
 
@@ -45,18 +48,15 @@ a, a:hover, a:focus {
 }
 
 #search{
-    /* background-color: red; */
     padding-bottom: 30px;
     margin-bottom: 30px;
     border-bottom: 1px solid #ddd;
 }
 
 #search-btn{
-    /* margin-top:24px;  */
+    margin-top:24px;
 }
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
+
 .wrapper {
     display: flex;
     align-items: stretch;
@@ -65,23 +65,26 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: rgb(237, 238, 241);
+    background: #ffffff;
     color: rgb(0, 0, 0);
     transition: all 0.3s;
+    margin: 0 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
 }
 
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+#sidebar ul {
+    margin: 0;
 }
 
 #sidebar ul li a {
-    padding: 10px;
+    padding: 15px;
     font-size: 1.1em;
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #fff;
+    background:  #5bc0de;
+    text-decoration: none;
 }
 
