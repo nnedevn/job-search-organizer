@@ -11,41 +11,49 @@
     <div>
       <div>
         <% jobs.forEach(function(job){ %>
-          <div class="single-post">
-            <a href="<%=job.jobUrl%>">
-              <h4>
-                <%= job.jobTitle %>
-              </h4>
-            </a>
-            <p class="company-info">
-              <%= job.companyName %> in
-                <%= job.companyLocation %>
-            </p>
-            <p>
-              <%= job.jobSummary %>
-            </p>
-            <p>Found on:
-              <span class="origin-site">Indeed.com</span>
-            </p>
+          <% var inDatabase = false; %>
+            <div class="single-post">
+              <a href="<%=job.jobUrl%>">
+                <h4>
+                  <%= job.jobTitle %>
+                </h4>
+              </a>
+              <p class="company-info">
+                <%= job.companyName %> in
+                  <%= job.companyLocation %>
+              </p>
+              <p>
+                <%= job.jobSummary %>
+              </p>
+              <p>Found on:
+                <span class="origin-site">Indeed.com</span>
+              </p>
 
+              <form action="/profile/fav" method="POST">
+                <input type="hidden" name="title" value="<%= job.jobTitle %>">
+                <input type="hidden" name="summary" value="<%= job.jobSummary %>">
+                <input type="hidden" name="url" value="<%= job.jobUrl %>">
+                <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
+                <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
+                <input type="hidden" name="originSite" value="Indeed">
+                <input type="hidden" name="companyName" value="<%= job.companyName %>">
+                <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
 
-
-
-
-
-            <form action="/profile/fav" method="POST">
-              <input type="hidden" name="title" value="<%= job.jobTitle %>">
-              <input type="hidden" name="summary" value="<%= job.jobSummary %>">
-              <input type="hidden" name="url" value="<%= job.jobUrl %>">
-              <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
-              <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
-              <input type="hidden" name="originSite" value="Indeed">
-              <input type="hidden" name="companyName" value="<%= job.companyName %>">
-              <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
-              <button type="submit" class="btn btn-small">Save</button>
-            </form>
-          </div>
-          <% }); %>
+                <%  jobsInDb.forEach(function(jobInDb){
+                if(jobInDb.title === job.jobTitle && jobInDb.companyName.trim() === job.companyName.trim()){
+                  inDatabase = true;
+                }
+              });
+               %>
+                <% if (inDatabase) {%>
+                  <button type="submit" class="btn btn-small" disabled>Saved</button>
+                <%}else{%>
+                  <button type="submit" class="btn btn-small">Save</button>
+                <%}%>
+              </form>
+            </div>
+        <% }); %>
+              <!-- End loop -->
       </div>
     </div>
   </div>

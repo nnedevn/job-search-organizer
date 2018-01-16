@@ -10,17 +10,23 @@ var parseIndeedData = require('../scraperfx/parseIndeedData.js');
 
 var jobsUrl = '';
 
+function getDbData(userId){
+  return db.job.findAll({
+    where: {userId: userId}
+  })
+}
+
 router.get('/', isLoggedIn, function (req, res) {
   res.render('profile/profile.ejs')
 });
 
 router.get('/jobs/:searchTerm/:location', isLoggedIn, function (req, res) {
-  
+
   getUrlRawHTML(req.params.searchTerm, req.params.location).then(function (rawHTML) {
-    return Promise.all([rawHTML, parseIndeedData(rawHTML)]);
+    return Promise.all([rawHTML, parseIndeedData(rawHTML), getDbData(req.user.id)]);
   })
     .then(function (result) {
-      res.render('profile/jobs/listNew.ejs', { jobs: result[1] });
+      res.render('profile/jobs/listNew.ejs', { jobs: result[1], jobsInDb: result[2] });
     })
     .catch(function (err) { console.log(err); })
 });
