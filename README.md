@@ -9,7 +9,17 @@ THe app checks new searches against what is stored in the database to make sure 
 
 
 To get facebook login working, set up a.env file with the following values:
+
+
 SESSION_SECRET=
+
+
 FACEBOOK_APP_ID=
+
+
 FACEBOOK_APP_SECRET=
+
+
 BASE_URL=http://localhost:3000
+
+
