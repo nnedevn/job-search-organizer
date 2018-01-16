@@ -1,6 +1,6 @@
 <div class="wrapper">
   <!-- Include the sidebar partial -->
-  <% include ../../partials/sidebar%>
+  <!-- <% include ../../partials/sidebar%> -->
     <div id="content">
       <!-- <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-align-left"></i>
@@ -8,22 +8,33 @@
       </button> -->
 
       <div>
-        <div>
+        <div class="">
 
-          <% jobs.forEach(function(job){ %>
-            <div data-jobId="<%=job.id%>">
-              <a href="<%=job.title%>">
-                <%= job.title %>
-              </a>
-            </div>
-
-            <button data-jobId="<%= job.id %>" id="" class="btn, btn-warning removeFromAppliedJob">Remove from Applied</button>
+            <% jobs.forEach(function(job){ %>
+              <div class="single-post">
+                <a href="<%=job.jobUrl%>">
+                  <h4>
+                    <%= job.title %>
+                  </h4>
+                </a>
+                <p class="company-info">
+                  <%= job.companyName %> in
+                    <%= job.companyLocation %>
+                </p>
+                <p>
+                  <%= job.summary %>
+                </p>
+                <p>Found on:
+                  <span class="origin-site">Indeed.com</span>
+                </p>
+    
+            <button data-jobId="<%= job.id %>" id="" class="btn btn-warning removeFromAppliedJob">Remove from Applied</button>
             <!--   <button data-jobId="<%= job.id %>" id="" class="btn, btn-danger deleteJob">Delete from Saved</button> -->
 
 
 
-
+          </div>
             <% }); %>
-        </div>
+        
       </div>
     </div>

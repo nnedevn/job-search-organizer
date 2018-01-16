@@ -1,33 +1,51 @@
 <div class="wrapper">
   <!-- Include the sidebar partial -->
-  <% include ../../partials/sidebar%>
-    <div id="content">
-      <!-- <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+  <!-- <% include ../../partials/sidebar%> -->
+  <div id="content">
+    <!-- <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Toggle Sidebar</span>
       </button> -->
-   
-      <!-- loading image -->
+
+    <!-- loading image -->
+    <div>
       <div>
-        <div>
-          <% jobs.forEach(function(job){ %>
-            <div>
-              <a href="<%=job.jobUrl%>">
+        <% jobs.forEach(function(job){ %>
+          <div class="single-post">
+            <a href="<%=job.jobUrl%>">
+              <h4>
                 <%= job.jobTitle %>
-              </a>
-              <form action="/profile/fav" method="POST">
-                <input type="hidden" name="title" value="<%= job.jobTitle %>">
-                <input type="hidden" name="summary" value="<%= job.jobSummary %>">
-                <input type="hidden" name="url" value="<%= job.jobUrl %>">
-                <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
-                <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
-                <input type="hidden" name="originSite" value="Indeed">
-                <input type="hidden" name="companyName" value="<%= job.companyName %>">
-                <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
-                <button type="submit" class="btn btn-small">Add to DB</button>
-              </form>
-            </div>
-            <% }); %>
-        </div>
+              </h4>
+            </a>
+            <p class="company-info">
+              <%= job.companyName %> in
+                <%= job.companyLocation %>
+            </p>
+            <p>
+              <%= job.jobSummary %>
+            </p>
+            <p>Found on:
+              <span class="origin-site">Indeed.com</span>
+            </p>
+
+
+
+
+
+
+            <form action="/profile/fav" method="POST">
+              <input type="hidden" name="title" value="<%= job.jobTitle %>">
+              <input type="hidden" name="summary" value="<%= job.jobSummary %>">
+              <input type="hidden" name="url" value="<%= job.jobUrl %>">
+              <input type="hidden" name="sponsored" value="<%= job.jobSponsored %>">
+              <input type="hidden" name="postedDate" value="<%= job.jobPostedDate %>">
+              <input type="hidden" name="originSite" value="Indeed">
+              <input type="hidden" name="companyName" value="<%= job.companyName %>">
+              <input type="hidden" name="companyLocation" value="<%= job.companyLocation %>">
+              <button type="submit" class="btn btn-small">Save</button>
+            </form>
+          </div>
+          <% }); %>
       </div>
     </div>
+  </div>

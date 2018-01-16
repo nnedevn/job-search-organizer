@@ -21,12 +21,17 @@
 
  <% if(currentUser) {%>
   <% include partials/search %>
+
 <% } %>
 
 
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-3">
+        <% include partials/sidebar %>
+      </div>
+  
+      <div class="col-md-9">
         <!-- <% include partials/alerts %> -->
         <%- body %>
       </div>
