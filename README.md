@@ -26,6 +26,9 @@ The end goal of this project is to have an application capable of handling all a
 ## Next Steps
 - [ ] Integrate this functionality into a much bigger React based application.
 - [ ] Create the necessary custom functions to search other sites, such as Glass door, dice, craigslist etc.
+- [ ] Integrate with calendar to keep track of the post's timeline
+- [ ] Implement automatic tagging of posts 
+- [ ] Implement selective display based on tags
 
 
 test username: testUser@nicknedev.com
