@@ -13,18 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     screenshotLink: DataTypes.STRING,
     companyName: DataTypes.STRING,
     companyLocation: DataTypes.STRING
-  // }, {
-  //   classMethods: {
-  //     associate: function(models) {
-  //       models.job.belongsTo(models.user);;
-  //     }
-  //   }
   });
 
-  job.associate = function(models){
+  job.associate = function (models) {
     models.job.belongsTo(models.user);
   }
   
-
   return job;
 };

@@ -27,35 +27,28 @@ module.exports = (sequelize, DataTypes) => {
     },
     facebookId: DataTypes.STRING,
     facebookToken: DataTypes.STRING
-  // },{
-  //   classMethods: {
-  //     associate: function(models){
-  //       models.user.hasMany(models.jobs)
-  //     }
-  //   }
-  }, 
-
-  {
-    hooks: {
-      beforeCreate: function(pendingUser, options) {
-        if (pendingUser && pendingUser.password) {
-          var hash = bcrypt.hashSync(pendingUser.password, 10);
-          pendingUser.password = hash;
+  },
+    {
+      hooks: {
+        beforeCreate: function (pendingUser, options) {
+          if (pendingUser && pendingUser.password) {
+            var hash = bcrypt.hashSync(pendingUser.password, 10);
+            pendingUser.password = hash;
+          }
         }
-      }
-    },
+      },
 
-  });
+    });
 
-  user.associate = function(models){
+  user.associate = function (models) {
     models.user.hasMany(models.job);
   }
 
-  user.prototype.isValidPassword = function(passwordTyped) {
+  user.prototype.isValidPassword = function (passwordTyped) {
     return bcrypt.compareSync(passwordTyped, this.password);
   }
 
-  user.prototype.toJSON = function() {
+  user.prototype.toJSON = function () {
     var user = this.get();
     delete user.password;
     return user;

@@ -4,16 +4,16 @@ var isLoggedIn = require('../middleware/isLoggedIn.js');
 var db = require('../models/');
 
 
-//----Data acquisition and parsing functions
+// Data acquisition and parsing functions
 var getUrlRawHTML = require('../scraperfx/getUrlRawHTML.js');
 var parseIndeedData = require('../scraperfx/parseIndeedData.js');
 
 var jobsUrl = '';
 
-//----Get all the save entries for the current user
-function getDbData(userId){
+// Get all the save entries for the current user
+function getDbData(userId) {
   return db.job.findAll({
-    where: {userId: userId}
+    where: { userId: userId }
   });
 }
 
@@ -40,7 +40,7 @@ router.post('/jobs', isLoggedIn, function (req, res) {
 
 router.get('/fav', isLoggedIn, function (req, res) {
 
-  //Send all the jobs with the current user's id.
+  // Send all the jobs with the current user's id.
   db.job.findAll({
     where: { userId: req.user.id },
 
@@ -72,13 +72,9 @@ router.post('/fav', isLoggedIn, function (req, res) {
   }).then(function (job) {
     res.redirect(jobsUrl);
   })
-
 });
 
 router.put('/fav/:id', isLoggedIn, function (req, res) {
-
-  console.log(req.body);
-
   db.job.findById(req.params.id).then(function (job) {
     if (job) {
       job.updateAttributes(req.body).then(function () {
@@ -90,10 +86,6 @@ router.put('/fav/:id', isLoggedIn, function (req, res) {
   }).catch(function (err) {
     res.status(500).send({ msg: 'error' });
   });
-
-  console.log('put reached');
-  res.send('fav route reached');
-
 });
 
 router.delete('/fav/:id', isLoggedIn, function (req, res) {
@@ -111,15 +103,12 @@ router.delete('/fav/:id', isLoggedIn, function (req, res) {
 });
 
 router.get('/applied', isLoggedIn, function (req, res) {
-
   db.job.findAll({
     where: { appliedFor: "true" },
-
   }).then(function (jobs) {
     // res.send(jobs);
     res.render('profile/jobs/listAppliedFor.ejs', { jobs: jobs });
   });
-
 });
 
 module.exports = router;

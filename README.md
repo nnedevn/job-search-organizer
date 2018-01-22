@@ -10,6 +10,7 @@ The app checks new searches against what is stored in the database to endure the
 The end goal of this project is to have an application capable of handling all aspects of a jobs search process.
 
 ## Approach
+* 
 
 ## Technologies Used
 * NodeJS

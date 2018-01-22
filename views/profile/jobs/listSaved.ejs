@@ -3,7 +3,6 @@
     <!-- loading image -->
     <div>
       <div class="">
-
         <% jobs.forEach(function(job){ %>
           <div class="single-post">
             <a href="<%=job.jobUrl%>">
@@ -26,10 +25,8 @@
               <%} else {%>
                 <button type="submit" data-jobId="<%= job.id %>" id="" class="btn btn-success addToAppliedJob">Add to Applied</button>
                 <%}%>
-            
             <button data-jobId="<%= job.id %>" id="" class="btn btn-danger deleteJob">Delete from Saved</button>
           </div>
           <% }); %>
-
       </div>
     </div>
