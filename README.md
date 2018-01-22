@@ -26,14 +26,18 @@ The end goal of this project is to have an application capable of handling all a
 ## Next Steps
 - [ ] Integrate this functionality into a much bigger React based application.
 - [ ] Create the necessary custom functions to search other sites, such as Glass door, dice, craigslist etc.
-- [ ]  
 
 
 test username: testUser@nicknedev.com
 test password: TheTestPassword!
 
 To enable facebook authentication, create a .env file in the root application folder. Populate it with the following values: 
+
 SESSION_SECRET=
+
 FACEBOOK_APP_ID=
+
 FACEBOOK_APP_SECRET=
+
 BASE_URL=http://localhost:3000
+
