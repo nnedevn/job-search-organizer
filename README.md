@@ -5,7 +5,7 @@ http://job--search--organizer.herokuapp.com/
 This is a prototype of an application that keeps track of job applications.
 Currently the app utilizes a headless browser(PhantomJS) to search indeed.com, parse the results, and store individual posts to a database (PostgreSQL).  
 The user can save individual job posts to be looked at later or mark them as applied to.
-The app checks new searches against what is stored in the database to endure there are no duplicates.
+The app checks new searches against what is stored in the database to ensure there are no duplicates.
 ## Goal
 The end goal of this project is to have an application capable of handling all aspects of a jobs search process.
 
